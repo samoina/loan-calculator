@@ -20,7 +20,7 @@ function showError() {
   showErrorDiv.innerHTML = "<p>Please enter a number in the field(s) below</p>";
 
   setTimeout(() => {
-    showErrorDiv.classList.remove("alert", "alert-warning");
+    showErrorDiv.classList.remove("alert", "alert-danger");
     showErrorDiv.innerHTML = "";
   }, 2000);
 }
@@ -35,28 +35,28 @@ function calculateInterest(event) {
     repaymentYears.value === ""
   ) {
     showError();
-  }
-  else {
+  } else {
     loadingDiv.style.display = "block";
 
-  setTimeout(() => {
-    let interest = (loanAmount.value * interestRate.value * years.value) / 100;
-    console.log(interest);
+    setTimeout(() => {
+      let interest =
+        (loanAmount.value * interestRate.value * years.value) / 100;
+      console.log(interest);
 
-    let totalMonthly = (interest / (years.value * 12)).toFixed(2);
-    console.log(totalMonthly);
+      let totalMonthly = (interest / (years.value * 12)).toFixed(2);
+      console.log(totalMonthly);
 
-    let total = parseInt(loanAmount.value) + interest;
-    console.log(total);
+      let total = parseInt(loanAmount.value) + interest;
+      console.log(total);
 
-    totalInterest.value = interest;
-    totalPayment.value = total;
-    monthlyPayments.value = totalMonthly;
+      totalInterest.value = interest;
+      totalPayment.value = total;
+      monthlyPayments.value = totalMonthly;
 
-    loadingDiv.style.display = "none";
-    resultsDiv.style.display = "block";
-  }, 2000);
+      loadingDiv.style.display = "none";
+      resultsDiv.style.display = "block";
 
+    }, 2000);
   }
 
   event.preventDefault();
